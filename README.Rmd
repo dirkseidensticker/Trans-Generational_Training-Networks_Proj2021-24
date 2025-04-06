@@ -1,0 +1,94 @@
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+land10 <- rnaturalearth::ne_download(scale = 10, type = "land", category = "physical", returnclass="sf")
+rivers10 <- rnaturalearth::ne_download(scale = 10, type = "rivers_lake_centerlines", category = "physical", returnclass = "sf")
+coast10 <- rnaturalearth::ne_download(scale = 10, type = 'coastline', category = 'physical', returnclass = "sf")
+lakes10 <- rnaturalearth::ne_download(scale = 10, type = "lakes", category = "physical", returnclass="sf")
+boundary_lines_land10 <- rnaturalearth::ne_download(scale = 10, type = 'boundary_lines_land', category = 'cultural', returnclass = "sf")
+
+s <- data.table::fread("samples.csv", encoding = "UTF-8")
+
+sites <- geojsonsf::geojson_sf(
+  "https://raw.githubusercontent.com/dirkseidensticker/aSCAC/refs/heads/master/sites.geojson")
+
+sites.sf <- sites
+
+sf::st_geometry(sites) <- NULL
+
+s.sites <- s %>%
+  dplyr::left_join(
+    sites,
+    by = "SITE"
+  ) %>%
+  dplyr::distinct(
+    SITE, 
+    LAT, 
+    LONG) %>%
+  sf::st_as_sf(
+    coords = c(
+      "LONG", 
+      "LAT"), 
+    crs = 4326, 
+    remove = F)
+
+bb <- sf::st_bbox(
+  s.sites)
+```
+
+# Investigating Trans-Generational Training Networks in Central Africa: A Multi-Layered Analysis of Pottery Technology (2021-2024)
+
+This repository contains information on the above named research project at Ghent University, funded by the *Fonds voor Wetenschappelijk Onderzoek – Vlaanderen* (grant number: **1287922N**) awarded to D. Seidensticker.
+
+```{r map, warning = FALSE, echo = FALSE, fig.align = 'center', fig.dim = c(12, 8), dpi = 300, out.width = '100%', fig.cap="Map of sampled sitese"}
+ggplot() + 
+  geom_sf(data = land10, fill = "white", color = NA) + 
+  geom_sf(data = coast10, size = .5, color = 'darkgrey') + 
+  geom_sf(data = rivers10, size = .5, color = 'darkgrey') + 
+  geom_sf(data = lakes10, fill = 'darkgrey', color = NA) + 
+  geom_sf(data = boundary_lines_land10, linewidth = .1, linetype = "dashed", color = 'black') + 
+  geom_sf(data = s.sites) + 
+  ggrepel::geom_text_repel(
+    data = s.sites,
+    aes(
+      x = LONG,
+      y = LAT,
+      label = SITE
+    ),
+    bg.color = "white", 
+    bg.r = .1,
+    max.overlaps = Inf, 
+    min.segment.length = 0
+  ) + 
+  coord_sf(
+    xlim = c(
+      bb[[1]], 
+      bb[[3]]
+    ),
+    ylim = c(
+      bb[[2]],
+      bb[[4]]
+    )
+  ) + 
+  ggthemes::theme_base() + 
+  theme(plot.background = element_blank(), 
+        axis.title = element_blank())
+```
+
+
+## Folder and File Structure
+
+* `samples.csv` contains a list of all studied samples and their meta-data
+
+## Licenses
+
+**Figures and Tables :** [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
+
+**Data :** [CC-0](http://creativecommons.org/publicdomain/zero/1.0/)
+attribution requested in reuse
+
+**Code :** [MIT License](https://opensource.org/licenses/MIT)
