@@ -20,6 +20,32 @@ Map of sampled sitese
 - `samples.csv` contains a list of all studied samples and their
   meta-data
 
+## Main Dataset **samples.csv**
+
+The list of studied samples contains the following fields:
+
+| Datafield | Description |
+|----|----|
+| ID | running sampling number |
+| nwCongoID | reference to DB ID’s in [nwCongo/data/nwCongoDB.sqlite](https://github.com/dirkseidensticker/nwCongo/blob/master/data/base/nwCongoDB.sqlite) |
+| tsID | running number of the thin-section slide |
+| SITE | name of the site |
+| CODE | site code as used in other reports |
+| FEAT | code of the feature |
+| IND | code of the individual sample / sherd |
+| POTTERY | pottery style in reference to [aSCAC/potterygroups.csv](https://github.com/dirkseidensticker/aSCAC/blob/master/potterygroups.csv) |
+| PROV | `x` marks samples with known provenance (e.g. ethnographic vessels or clay samples) |
+| Xray | `x` marks samples with pXRF data |
+| TYPE | identifies type of sherd or other characteristics |
+| BOX | storage location |
+| FABRIC | macroscopic fabric |
+| SUBGRP | detailed macroscopic fabric (cf. Seidensticker 2021) |
+| SurfSponges | marks absence/presence of sponge spicules using reflective light microscope |
+| NOTES | notes |
+| RIVER | river system |
+| GROUP | initial sampeling clusters |
+| REFERENCE | reference to published sources |
+
 ## Licenses
 
 **Figures and Tables :**
