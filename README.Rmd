@@ -110,6 +110,12 @@ The list of studied samples contains the following fields:
 | GROUP | initial sampeling clusters |
 | REFERENCE | reference to published sources |
 
+## Paper based on this project
+
+| | | 
+|---|---|
+| | D. Seidensticker, W. Hubau, F. Mees, G. Fiers & V. Cnudde (submitted) “On and Off the Rivers: Strategies for Clay Sourcing and Preparation in the Congo Basin.”. Data & code [OnOffRivers](https://github.com/dirkseidensticker/OnOffRivers) | 
+| ![](https://raw.githubusercontent.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR/refs/heads/main/cover.jpg) | D. Seidensticker (2025) [“Pikunda-Munda: Disappearance of Pottery Production in the Western Congo Basin at the End of the Early Iron Age.”](https://link.springer.com/article/10.1007/s10437-024-09610-8) African Archaeological Review. doi:10.1007/s10437-024-09610-8. Data & code: [PikundaMunda_DissapearingPotteryTraditions_AAR](https://github.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR) |
 
 ## Licenses
 
