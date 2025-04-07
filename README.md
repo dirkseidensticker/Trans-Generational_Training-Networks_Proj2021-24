@@ -1,4 +1,8 @@
 
+<p align="center">
+<img src="logo.svg" width = 200>
+</p>
+
 # Investigating Trans-Generational Training Networks in Central Africa: A Multi-Layered Analysis of Pottery Technology (2021-2024)
 
 This repository contains information on the above named research project
