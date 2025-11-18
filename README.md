@@ -1,5 +1,6 @@
 
 <p align="center">
+
 <img src="logo.svg" width = 200>
 </p>
 
@@ -14,6 +15,7 @@ Seidensticker.
 
 <img src="README_files/figure-gfm/map-1.png" alt="Map of sampled sitese" width="100%" />
 <p class="caption">
+
 Map of sampled sitese
 </p>
 
@@ -54,7 +56,7 @@ The list of studied samples contains the following fields:
 
 |  |  |
 |----|----|
-|  | D. Seidensticker, W. Hubau, F. Mees, G. Fiers & V. Cnudde (submitted) “On and Off the Rivers: Strategies for Clay Sourcing and Preparation in the Congo Basin.”. Data & code [OnOffRivers](https://github.com/dirkseidensticker/OnOffRivers) |
+| ![](https://raw.githubusercontent.com/dirkseidensticker/OnOffRivers/refs/heads/main/cover.jpg) | D. Seidensticker, W. Hubau, F. Mees, G. Fiers & V. Cnudde (2025) [“On and off the rivers: Changes in clay sourcing and preparation strategies in the Congo Basin throughout the past two millennia.”](https://linkinghub.elsevier.com/retrieve/pii/S2352409X25003311) Journal of Archaeological Science: Reports. <doi:10.1016/j.jasrep.2025.105298>. Data & code: [OnOffRivers](https://github.com/dirkseidensticker/OnOffRivers) |
 | ![](https://raw.githubusercontent.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR/refs/heads/main/cover.jpg) | D. Seidensticker (2025) [“Pikunda-Munda: Disappearance of Pottery Production in the Western Congo Basin at the End of the Early Iron Age.”](https://link.springer.com/article/10.1007/s10437-024-09610-8) African Archaeological Review. <doi:10.1007/s10437-024-09610-8>. Data & code: [PikundaMunda_DissapearingPotteryTraditions_AAR](https://github.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR) |
 
 ## Licenses

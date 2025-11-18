@@ -11,7 +11,17 @@ coast10 <- rnaturalearth::ne_download(scale = 10, type = 'coastline', category =
 lakes10 <- rnaturalearth::ne_download(scale = 10, type = "lakes", category = "physical", returnclass="sf")
 boundary_lines_land10 <- rnaturalearth::ne_download(scale = 10, type = 'boundary_lines_land', category = 'cultural', returnclass = "sf")
 
+riversGRIT <- sf::st_read(
+  "https://github.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR/raw/refs/heads/main/gis/GRITv06_segments_simple_AF_EPSG4326.gpkg", 
+  layer = "lines")
+
 s <- data.table::fread("samples.csv", encoding = "UTF-8")
+
+# remove additonal samples, not per se realated to FWO research
+s <- s %>% 
+  dplyr::filter(
+    !ID %in% c(99:103,353:358)
+  )
 
 sites <- geojsonsf::geojson_sf(
   "https://raw.githubusercontent.com/dirkseidensticker/aSCAC/refs/heads/master/sites.geojson")
@@ -24,7 +34,7 @@ s.sites <- s %>%
   dplyr::left_join(
     sites,
     by = "SITE"
-  ) %>%
+  ) %>% 
   dplyr::distinct(
     SITE, 
     LAT, 
@@ -52,7 +62,7 @@ This repository contains information on the above named research project at Ghen
 ggplot() + 
   geom_sf(data = land10, fill = "white", color = NA) + 
   geom_sf(data = coast10, size = .5, color = 'darkgrey') + 
-  geom_sf(data = rivers10, size = .5, color = 'darkgrey') + 
+  geom_sf(data = riversGRIT, size = .5, color = 'darkgrey') + 
   geom_sf(data = lakes10, fill = 'darkgrey', color = NA) + 
   geom_sf(data = boundary_lines_land10, linewidth = .1, linetype = "dashed", color = 'black') + 
   geom_sf(data = s.sites) + 
@@ -118,7 +128,7 @@ The list of studied samples contains the following fields:
 
 | | | 
 |---|---|
-| | D. Seidensticker, W. Hubau, F. Mees, G. Fiers & V. Cnudde (submitted) “On and Off the Rivers: Strategies for Clay Sourcing and Preparation in the Congo Basin.”. Data & code [OnOffRivers](https://github.com/dirkseidensticker/OnOffRivers) | 
+| ![](https://raw.githubusercontent.com/dirkseidensticker/OnOffRivers/refs/heads/main/cover.jpg) | D. Seidensticker, W. Hubau, F. Mees, G. Fiers & V. Cnudde (2025) [“On and off the rivers: Changes in clay sourcing and preparation strategies in the Congo Basin throughout the past two millennia.”](https://linkinghub.elsevier.com/retrieve/pii/S2352409X25003311) Journal of Archaeological Science: Reports. doi:10.1016/j.jasrep.2025.105298. Data & code: [OnOffRivers](https://github.com/dirkseidensticker/OnOffRivers) |
 | ![](https://raw.githubusercontent.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR/refs/heads/main/cover.jpg) | D. Seidensticker (2025) [“Pikunda-Munda: Disappearance of Pottery Production in the Western Congo Basin at the End of the Early Iron Age.”](https://link.springer.com/article/10.1007/s10437-024-09610-8) African Archaeological Review. doi:10.1007/s10437-024-09610-8. Data & code: [PikundaMunda_DissapearingPotteryTraditions_AAR](https://github.com/dirkseidensticker/PikundaMunda_DissapearingPotteryTraditions_AAR) |
 
 ## Licenses
